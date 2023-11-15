@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './labs.component.css'
 })
 export class LabsComponent {
+
   welcome = 'Bienvenido a mi primera aplicación con Angular';
   tasks = [
     'Instalar Angular CLI',
@@ -16,7 +17,8 @@ export class LabsComponent {
     'Crear componente',
     'Crear servicio',
   ];
-  name = 'Nicolas';
+
+  name = 'Giovanni';
   age = 18;
   disabled = true;
   img = 'https://w3schools.com/howto/img_avatar.png';
@@ -26,4 +28,5 @@ export class LabsComponent {
     age: 18,
     avatar: 'https://w3schools.com/howto/img_avatar.png'
   }
+
 }
