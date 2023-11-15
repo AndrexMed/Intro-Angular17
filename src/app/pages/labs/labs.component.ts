@@ -20,7 +20,7 @@ export class LabsComponent {
 
   name = 'Giovanni';
   age = 18;
-  disabled = true;
+  disabled = false;
   img = 'https://w3schools.com/howto/img_avatar.png';
 
   person = {
@@ -29,4 +29,11 @@ export class LabsComponent {
     avatar: 'https://w3schools.com/howto/img_avatar.png'
   }
 
+  holamundo(){
+    console.log("Hola mundo")
+  }
+
+  inputValue(event: Event){
+    console.log(event)
+  }
 }
