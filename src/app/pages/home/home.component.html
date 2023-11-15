@@ -10,10 +10,10 @@
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
-        <li class="completed" *ngFor="let item of tasks(); index as i">
+        <li [class.completed]="item.completed" *ngFor="let item of tasks(); index as i">
           <div class="view">
             <input class="toggle" type="checkbox" checked />
-            <label>{{ item }}</label>
+            <label>{{ item.title }}</label>
             <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
           <input class="edit" value="Learn JavaScript" />
