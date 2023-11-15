@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,7 +18,8 @@ export class LabsComponent {
     'Crear servicio',
   ];
 
-  name = 'Giovanni';
+  name = signal('Giovanni');
+
   age = 18;
   disabled = false;
   img = 'https://w3schools.com/howto/img_avatar.png';
@@ -29,16 +30,18 @@ export class LabsComponent {
     avatar: 'https://w3schools.com/howto/img_avatar.png'
   }
 
-  clickHanlder(){
+  clickHanlder() {
     console.log("Hola mundo")
   }
 
-  changeHandler(event: Event){
-    console.log(event)
+  changeHandler(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value
+    this.name.set(newValue)
   }
 
   inputValue = ''
-  keydownHandler(event: KeyboardEvent){
+  keydownHandler(event: KeyboardEvent) {
     const inputValue = event.target as HTMLInputElement;
     this.inputValue = inputValue.value
     console.log(this.inputValue)
