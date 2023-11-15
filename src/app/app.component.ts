@@ -11,4 +11,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'todoapp';
+  items = [
+    {
+      nombre: "gio",
+      edad: 28
+    }
+  ]
 }
