@@ -22,13 +22,17 @@
 
     <section class="main">
       <ul class="todo-list">
-        <li [class.completed]="item.completed" *ngFor="let item of tasks(); index as i">
+        <li 
+        [class.editing]="item.editing"
+        [class.completed]="item.completed"
+         *ngFor="let item of tasks(); index as i" 
+         (dblclick)="updateTaskEditingMode(i)">
           <div class="view">
             <input class="toggle" type="checkbox" [checked]="item.completed" (change)="updateTask(i)" />
             <label>{{ item.title }}</label>
             <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
-          <input class="edit" value="Learn JavaScript" />
+          <input class="edit" [value]="item.title" (keydown.enter)="updateTaskText(i, $event)"/>
         </li>
         <!--
         <li>
