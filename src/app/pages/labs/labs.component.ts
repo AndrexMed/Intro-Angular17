@@ -38,6 +38,13 @@ export class LabsComponent {
       Validators.required
     ]
   });
+  nameCtrl = new FormControl('', {
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.minLength(3)
+    ]
+  });
 
   constructor() {
     this.colorCtrl.valueChanges.subscribe(value => console.log(value))
