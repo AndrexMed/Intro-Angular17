@@ -16,8 +16,13 @@
 <button [disabled]="disabled">Click me</button>
 <p>person: {{ person.name }}</p>
 <hr>
-<button (click)="holamundo()">Click me</button>
-<button (dblclick)="holamundo()">DblClick me</button>
+<button (click)="clickHanlder()">Click me</button>
+<button (dblclick)="clickHanlder()">DblClick me</button>
 <p>(change)</p>
-<input type="number" (change)="inputValue($event)">
+<input type="number" (change)="changeHandler($event)">
+<hr>
+<p>(keydown)</p>
+<input type="text" (keydown)="keydownHandler($event)">
+<p>(keydown + tecla)</p>
+<input type="text" (keydown.shift.t)="clickHanlder()">
 </div>

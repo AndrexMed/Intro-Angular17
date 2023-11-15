@@ -29,11 +29,18 @@ export class LabsComponent {
     avatar: 'https://w3schools.com/howto/img_avatar.png'
   }
 
-  holamundo(){
+  clickHanlder(){
     console.log("Hola mundo")
   }
 
-  inputValue(event: Event){
+  changeHandler(event: Event){
     console.log(event)
+  }
+
+  inputValue = ''
+  keydownHandler(event: KeyboardEvent){
+    const inputValue = event.target as HTMLInputElement;
+    this.inputValue = inputValue.value
+    console.log(this.inputValue)
   }
 }
