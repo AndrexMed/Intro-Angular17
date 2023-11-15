@@ -12,8 +12,8 @@
   <p> la suma es 3 + 3 es {{ 3 + 3 }}</p>
   <p>Hola soy {{ name() }} y mi edad es {{ age }}</p>
   <hr />
-  <img [src]="person.avatar" style="width: 100px;">
-  <input type="text" [value]="person.name">
+  <img [src]="person().avatar" style="width: 100px;">
+  <input type="text" [value]="person().name">
   <button [disabled]="disabled">Click me</button>
   <p>person: {{ person.name }}</p>
   <hr>
@@ -30,4 +30,19 @@
   <h1>Signals</h1>
   <input type="text" (change)="changeHandler($event)" [value]="name()">
   <p>{{ name() }}</p>
+  <hr>
+  <h2>ngIf</h2>
+  <div *ngIf="1 != 1">
+    Uno es diferente de 1
+  </div>
+  <div *ngIf="name() === 'Giovanni'">
+    name es igual a 'Giovanni'
+  </div>
+  <input type="number" [value]="person().age" (change)="changeAge($event)">
+  <div *ngIf="person().name === 'Giovanni' && person().age >= 18; else elseBlock">
+    person.name es igual a 'Giovanni', y es mayor de edad
+  </div>
+  <ng-template #elseBlock>
+    Soy gio y soy menor de 18 
+  </ng-template>
 </div>
