@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, Injector, OnInit, computed, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Tasks } from '../../models/tasks.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,20 +10,9 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  tasks = signal<Tasks[]>([
-    {
-      id: Date.now(),
-      title: "Crear proyecto",
-      completed: false
-    },
-    {
-      id: Date.now(),
-      title: "Crear componentes",
-      completed: false
-    }
-  ]);
+  tasks = signal<Tasks[]>([]);
 
   newTaskControl = new FormControl('', {
     nonNullable: true,
@@ -45,6 +34,34 @@ export class HomeComponent {
     }
     return tasks;
   })
+
+  injector = inject(Injector);
+
+  // constructor() {
+  //   effect(() => {
+  //     const tasks = this.tasks();
+  //     localStorage.setItem("tasks", JSON.stringify(tasks))
+  //     console.log('run effect')
+  //   });
+  // } ESTE METODO SE CONFIGURO PARA EJECUTARSE DESPUES DEL ONINIT SI ES NECESARIO...DE LO CONTRARIO SE EJECUTARIA PRIMERO
+
+  ngOnInit(): void {
+    const storage = localStorage.getItem("tasks");
+    if (storage) {
+      const tasks = JSON.parse(storage);
+      this.tasks.set(tasks);
+    }
+    console.log("OnInit")
+    this.trackTasks();
+  }
+
+  trackTasks() {
+    effect(() => {
+      const tasks = this.tasks();
+      localStorage.setItem("tasks", JSON.stringify(tasks))
+      console.log('run effect')
+    }, { injector: this.injector });
+  }
 
   changeHandler() {
     if (this.newTaskControl.valid) {
