@@ -3,14 +3,8 @@
     <div class="container">
       <h1>My Day</h1>
       <p>All my tasks in one place</p>
-      <input 
-      class="new-todo" 
-      placeholder="Type new todo" 
-      autofocus 
-      type="text" 
-      [formControl]="newTaskControl"
-      (keydown.enter)="changeHandler()"
-      [class.error]="newTaskControl.invalid && newTaskControl.touched"/>
+      <input class="new-todo" placeholder="Type new todo" autofocus type="text" [formControl]="newTaskControl"
+        (keydown.enter)="changeHandler()" [class.error]="newTaskControl.invalid && newTaskControl.touched" />
     </div>
   </header>
   <div class="container todoapp-wrapper">
@@ -23,17 +17,14 @@
 
     <section class="main">
       <ul class="todo-list">
-        <li 
-        [class.editing]="item.editing"
-        [class.completed]="item.completed"
-         *ngFor="let item of tasks(); index as i" 
-         (dblclick)="updateTaskEditingMode(i)">
+        <li [class.editing]="item.editing" [class.completed]="item.completed"
+          *ngFor="let item of taskByFilter(); index as i" (dblclick)="updateTaskEditingMode(i)">
           <div class="view">
             <input class="toggle" type="checkbox" [checked]="item.completed" (change)="updateTask(i)" />
             <label>{{ item.title }}</label>
             <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
-          <input class="edit" [value]="item.title" (keydown.enter)="updateTaskText(i, $event)"/>
+          <input class="edit" [value]="item.title" (keydown.enter)="updateTaskText(i, $event)" />
         </li>
         <!--
         <li>
@@ -58,17 +49,20 @@
     <!-- This footer should be hidden by default and shown when there are todos -->
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
-      <span class="todo-count"><strong>{{ tasks().length }}</strong> {{ tasks().length == 1 ? 'item' : 'items'}}</span>
+      <span class="todo-count">
+        <strong>{{ taskByFilter().length }}</strong>
+        {{ taskByFilter().length == 1 ? 'item' : 'items'}}
+      </span>
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a routerLink="/" class="selected">All</a>
+          <a routerLink="/" (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
         </li>
         <li>
-          <a routerLink="/pending">Pending</a>
+          <a routerLink="/pending" (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
         </li>
         <li>
-          <a routerLink="/completed">Completed</a>
+          <a routerLink="/completed" (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
