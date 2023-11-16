@@ -40,7 +40,7 @@ export class HomeComponent {
         this.newTaskControl.setValue('')
       }
     } else {
-      alert("Form invalid")
+      this.newTaskControl.markAllAsTouched();
     }
   }
 

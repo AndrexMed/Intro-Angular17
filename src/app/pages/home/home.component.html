@@ -9,7 +9,8 @@
       autofocus 
       type="text" 
       [formControl]="newTaskControl"
-      (keydown.enter)="changeHandler()" />
+      (keydown.enter)="changeHandler()"
+      [class.error]="newTaskControl.invalid && newTaskControl.touched"/>
     </div>
   </header>
   <div class="container todoapp-wrapper">
