@@ -3,9 +3,11 @@
   <h2>{{ welcome }}</h2>
   <ul>
     <p>total: {{ tasks().length }}</p>
-    <li *ngFor="let task of tasks(); index as i">
+    @for (task of tasks(); track task; let i = $index) {
+  <li>
       {{ i }} - {{ task }}
     </li>
+}
   </ul>
   <hr />
   <h2>{{ 'Hola'.repeat(4) }}</h2>
@@ -32,27 +34,43 @@
   <p>{{ name() }}</p>
   <hr>
   <h2>ngIf</h2>
-  <div *ngIf="1 != 1">
+  @if (1 != 1) {
+<div>
     Uno es diferente de 1
   </div>
-  <div *ngIf="name() === 'Giovanni'">
+}
+  @if (name() === 'Giovanni') {
+<div>
     name es igual a 'Giovanni'
   </div>
+}
   <input type="number" [value]="person().age" (change)="changeAge($event)">
-  <div *ngIf="person().name === 'Giovanni' && person().age >= 18; else elseBlock">
+  @if (person().name === 'Giovanni' && person().age >= 18) {
+<div>
     person.name es igual a 'Giovanni', y es mayor de edad
   </div>
-  <ng-template #elseBlock>
+} @else {
+
     Soy gio y soy menor de 18
-  </ng-template>
+  
+}
+  
   <hr>
   <h2>ngSwitch</h2>
   <input type="text" [value]="person().name" (change)="changeName($event)">
-  <div [ngSwitch]="person().name">
-    <p *ngSwitchCase="'giovanni'"> yo soy giovanni</p>
-    <p *ngSwitchCase="'Giovanni'">yo soy Giovanni</p>
-    <p *ngSwitchDefault>no cumplio ningun case</p>
-  </div>
+  <div>
+@switch (person().name) {
+    @case ('giovanni') {
+  <p> yo soy giovanni</p>
+}
+    @case ('Giovanni') {
+  <p>yo soy Giovanni</p>
+}
+    @default {
+  <p>no cumplio ningun case</p>
+}
+  }
+</div>
   <hr>
   <h2>Input</h2>
   <input type="color" [formControl]="colorCtrl">

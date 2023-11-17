@@ -4,7 +4,7 @@
       <h1>My Day</h1>
       <p>All my tasks in one place</p>
       <input class="new-todo" placeholder="Type new todo" autofocus type="text" [formControl]="newTaskControl"
-        (keydown.enter)="changeHandler()" [class.error]="newTaskControl.invalid && newTaskControl.touched" />
+        (keydown.enter)="changeHandler()" [class.error]="newTaskControl.invalid && newTaskControl.touched"/>
     </div>
   </header>
   <div class="container todoapp-wrapper">
@@ -17,8 +17,8 @@
 
     <section class="main">
       <ul class="todo-list">
-        <li [class.editing]="item.editing" [class.completed]="item.completed"
-          *ngFor="let item of taskByFilter(); index as i" (dblclick)="updateTaskEditingMode(i)">
+        @for (item of taskByFilter(); track item; let i = $index) {
+        <li [class.editing]="item.editing" [class.completed]="item.completed" (dblclick)="updateTaskEditingMode(i)">
           <div class="view">
             <input class="toggle" type="checkbox" [checked]="item.completed" (change)="updateTask(i)" />
             <label>{{ item.title }}</label>
@@ -26,6 +26,7 @@
           </div>
           <input class="edit" [value]="item.title" (keydown.enter)="updateTaskText(i, $event)" />
         </li>
+        }
         <!--
         <li>
           <div class="view">
@@ -47,7 +48,8 @@
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
-    <footer class="footer" *ngIf="taskByFilter().length > 0">
+    @if (taskByFilter().length > 0) {
+    <footer class="footer">
       <!-- This should be `0 items left` by default -->
       <span class="todo-count">
         <strong>{{ taskByFilter().length }}</strong>
@@ -59,14 +61,17 @@
           <a routerLink="/" (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
         </li>
         <li>
-          <a routerLink="/pending" (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
+          <a routerLink="/pending" (click)="changeFilter('pending')"
+            [class.selected]="filter() === 'pending'">Pending</a>
         </li>
         <li>
-          <a routerLink="/completed" (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
+          <a routerLink="/completed" (click)="changeFilter('completed')"
+            [class.selected]="filter() === 'completed'">Completed</a>
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
       <button class="clear-completed">Clear completed</button>
     </footer>
+    }
   </div>
 </section>
