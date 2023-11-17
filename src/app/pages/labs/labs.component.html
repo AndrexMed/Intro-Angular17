@@ -46,21 +46,6 @@
     Soy gio y soy menor de 18
   </ng-template>
   <hr>
-  <h2>ngIf new Sintaxis</h2>
-  @if (name() === 'Giovanni') {
-    <div>name es igual a Giovanni nueva sintaxis</div>
-  }
-  
-  @if (person().name === 'Giovanni' && person().age >= 18) {
-    <div>
-      person.name es igual a 'Giovanni', y es mayor de edad new sintaxis
-    </div>
-  } @else{
-    <div>
-      soy menor de 18 new sintaxis
-    </div>
-  }
-  <hr>
   <h2>ngSwitch</h2>
   <input type="text" [value]="person().name" (change)="changeName($event)">
   <div [ngSwitch]="person().name">
@@ -88,5 +73,42 @@
   <p>
     <input type="text">
   </p>
+  <hr>
+  <h2>New sintaxis angular</h2>
+  <h3>ngIf new Sintaxis</h3>
+  @if (name() === 'Giovanni') {
+  <div>name es igual a Giovanni nueva sintaxis</div>
+  }
 
+  @if (person().name === 'Giovanni' && person().age >= 18) {
+  <div>
+    person.name es igual a 'Giovanni', y es mayor de edad new sintaxis
+  </div>
+  } @else{
+  <div>
+    soy menor de 18 new sintaxis
+  </div>
+  }
+  <h3>new for</h3>
+  <ul>
+    @for (task of tasks(); track task; let i = $index) {
+    <li>{{ i }} - {{ task }}</li>
+    } @empty {
+    <li>La lista esta vacia</li>
+    }
+  </ul>
+
+  <hr>
+  <h2>NEW ngSwitch</h2>
+  @switch (person().name) {
+    @case ('Giovanni') {
+      <p>soy gio</p>
+    }
+    @case ('gio') {
+      <p>soy gio</p>
+    }
+    @default {
+      <p>no es ninguno</p>
+    }
+  }
 </div>
