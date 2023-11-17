@@ -46,6 +46,21 @@
     Soy gio y soy menor de 18
   </ng-template>
   <hr>
+  <h2>ngIf new Sintaxis</h2>
+  @if (name() === 'Giovanni') {
+    <div>name es igual a Giovanni nueva sintaxis</div>
+  }
+  
+  @if (person().name === 'Giovanni' && person().age >= 18) {
+    <div>
+      person.name es igual a 'Giovanni', y es mayor de edad new sintaxis
+    </div>
+  } @else{
+    <div>
+      soy menor de 18 new sintaxis
+    </div>
+  }
+  <hr>
   <h2>ngSwitch</h2>
   <input type="text" [value]="person().name" (change)="changeName($event)">
   <div [ngSwitch]="person().name">
