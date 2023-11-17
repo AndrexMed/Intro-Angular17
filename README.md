@@ -1,27 +1,23 @@
-# Todoapp
+https://mydayapp-bbc3a.web.app/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Introducción a Angular 17 - Aplicación de Lista de Tareas (Todo)
+Este proyecto proporciona una introducción básica y práctica a la versión 17 del framework Angular, con un énfasis específico en la construcción de una aplicación simple de lista de tareas (Todo). Angular es un framework de desarrollo front-end robusto y ampliamente utilizado que facilita la creación de aplicaciones web dinámicas y escalables.
 
-## Development server
+Características Principales
+Gestión de Tareas: Implementa un sistema de gestión de tareas que permite a los usuarios agregar, eliminar y marcar como completadas sus tareas pendientes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Componentes Angular: Utiliza componentes Angular para estructurar y modularizar la aplicación, facilitando el mantenimiento y la escalabilidad del código.
 
-## Code scaffolding
+Servicios Angular: Introduce servicios Angular para gestionar la lógica de negocio y compartir datos entre diferentes partes de la aplicación.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Enlace de Datos Bidireccional: Explora el enlace de datos bidireccional de Angular para mantener sincronizados los datos del modelo y la interfaz de usuario.
 
-## Build
+Instrucciones de Uso
+Instalación de Dependencias: Asegúrate de tener Node.js y npm instalados. Ejecuta npm install en la raíz del proyecto para instalar las dependencias necesarias.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Servidor de Desarrollo: Utiliza el comando ng serve para iniciar el servidor de desarrollo. Navega a http://localhost:4200/ para ver la aplicación en tu navegador.
 
-## Running unit tests
+Explora la Aplicación: Interactúa con la aplicación para gestionar tus tareas pendientes. Agrega nuevas tareas, marca las existentes como completadas y experimenta con las funcionalidades proporcionadas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contribuciones
+¡Las contribuciones son bienvenidas! Si encuentras errores, mejoras o nuevas características que podrían ser implementadas, no dudes en abrir un problema o enviar una solicitud de extracción.
